@@ -1,0 +1,8 @@
+
+<suite name="Suite">
+    <test name="Test">
+        <classes>
+            <class name="com.test.selenium_project.GoogleTest"/>
+        </classes>
+    </test>
+</suite>
