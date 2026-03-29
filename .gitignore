@@ -1,0 +1,78 @@
+# =========================
+# Maven
+# =========================
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# =========================
+# Compiled class files
+# =========================
+*.class
+
+# =========================
+# Logs
+# =========================
+*.log
+logs/
+
+# =========================
+# IDE - IntelliJ
+# =========================
+.idea/
+*.iml
+out/
+
+# =========================
+# IDE - Eclipse
+# =========================
+.project
+.classpath
+.settings/
+bin/
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Selenium / Test Outputs
+# =========================
+test-output/
+screenshots/
+reports/
+allure-results/
+allure-report/
+
+# =========================
+# Temporary files
+# =========================
+*.tmp
+*.swp
+
+# =========================
+# Environment / Config
+# =========================
+.env
+config.properties
+
+# =========================
+# WebDriver binaries (if any)
+# =========================
+drivers/
+*.exe
+
+# =========================
+# Node (if you ever add frontend tools)
+# =========================
+node_modules/
+
+# =========================
+# Coverage reports
+# =========================
+coverage/
