@@ -1,9 +1,10 @@
 package com.main.pages;
 
-
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import java.time.Duration;
 
 public class LoginPage {
 
@@ -15,26 +16,19 @@ public class LoginPage {
     }
 
     // Locators
-    By username = By.id("user-name");
-    By password = By.id("password");
+    By usernameField = By.id("user-name");
+    By passwordField = By.id("password");
     By loginBtn = By.id("login-button");
 
-    // Actions (Methods)
-    public void enterUsername(String user) {
-        driver.findElement(username).sendKeys(user);
-    }
-
-    public void enterPassword(String pass) {
-        driver.findElement(password).sendKeys(pass);
-    }
-
-    public void clickLogin() {
-        driver.findElement(loginBtn).click();
-    }
-
+    // Actions
     public void login(String user, String pass) {
-        enterUsername(user);
-        enterPassword(pass);
-        clickLogin();
+        driver.findElement(usernameField).sendKeys(user);
+        driver.findElement(passwordField).sendKeys(pass);
+        driver.findElement(loginBtn).click();
+
+        // WAIT for next page
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.urlContains("inventory"));
     }
+    
 }

@@ -2,30 +2,42 @@ package com.main.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 public class ProductPage {
 
-    WebDriver driver;
+    private WebDriver driver;
 
+    // Constructor
     public ProductPage(WebDriver driver) {
         this.driver = driver;
     }
 
     // Locators
-    By firstProductAddToCart = By.id("add-to-cart-sauce-labs-backpack");
-    By cartIcon = By.className("shopping_cart_link");
-    By cartBadge = By.className("shopping_cart_badge");
+    private By cartIcon = By.className("shopping_cart_link");
+    private By cartBadge = By.className("shopping_cart_badge");
 
     // Actions
-    public void addFirstProductToCart() {
-        driver.findElement(firstProductAddToCart).click();
-    }
 
+    // Add specific product by name (dynamic)
+    public void addProductByName(String productName) {
+
+        String xpath = "//div[text()='" + productName + "']/ancestor::div[@class='inventory_item']//button";
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+    }
+    // Click cart icon
     public void clickCart() {
         driver.findElement(cartIcon).click();
     }
 
+    // Get cart count
     public String getCartCount() {
-        return driver.findElement(cartBadge).getText();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(cartBadge)).getText();
     }
 }

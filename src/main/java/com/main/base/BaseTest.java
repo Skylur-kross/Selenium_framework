@@ -1,22 +1,21 @@
 package com.main.base;
 
-import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import com.main.Utils.*;
+import org.testng.annotations.AfterClass;
+//import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+//import org.testng.annotations.BeforeMethod;
+import com.main.Utils.DriverFactory;
 
 public class BaseTest {
 
-    protected WebDriver driver;
-
-    @BeforeMethod
+    @BeforeClass
     public void setup() {
-        driver = DriverFactory.initDriver();
-        driver.get("https://www.saucedemo.com/");
+        DriverFactory.initDriver();
+        DriverFactory.getDriver().get("https://www.saucedemo.com/");
     }
 
-    @AfterMethod
+    @AfterClass
     public void tearDown() {
-        driver.quit();
+        DriverFactory.quitDriver();
     }
 }
